@@ -9,10 +9,10 @@ import os.path,sys,urllib,shutil,subprocess
 
 
 cl = STN.LINE()
-cl.login(token='authoken punya kalian')
+cl.login(token='masukkan token auth kamu')
 cl.loginResult()
 
-print u"PRANK BOTLIKE SUCCESS LOGIN"
+print u"Botlike Sukses"
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -20,7 +20,7 @@ KAC = [cl]
 mid = cl.getProfile().mid
 
 Bots = [mid]
-admid= "mid kalian"
+admid= "masukkan id kamu"
 wait = {
     'contact':False,
     'autoJoin':True,
@@ -28,9 +28,9 @@ wait = {
     'leaveRoom':True,
     'timeline':True,
     'autoAdd':False,
-    'message':"❂••••••••AUTO ADD••••••••❂\nhttps://line.me/R/ti/p/%40iya4481p\n『⊰์◉⊱ᎢᎬᎪᎷ ᏴᏞᎪᏟᏦ ❂Ғ ᏀᎪᎷᎬᎡ⊰์◉⊱』",
+    'message':"Terimakasih Sudah Memakai Bot Likes Buatan Kami :) ",
     "lang":"JP",
-    "comment1":"❂••••••••••••••••••••••••••❂\n https://line.me/R/ti/p/%40iya4481p\n『⊰์◉⊱ᎢᎬᎪᎷ ᏴᏞᎪᏟᏦ ❂Ғ ᏀᎪᎷᎬᎡ⊰์◉⊱』",
+    "comment1":"Terimakasih Sudah Memakai Bot Likes Buatan Kami :)",
     "commentOn":False,
     "commentBlack":{},
     "wblack":False,
@@ -122,7 +122,7 @@ def bot(op):
                 if wait["timeline"] == True:
                     msg.contentType = 0
                     if wait["lang"] == "JP":
-                        msg.text = "menempatkan URL\n" + msg.contentMetadata["postEndUrl"]
+                        msg.text = "sedang menempatkan URL\n" + msg.contentMetadata["postEndUrl"]
                     else:
                         msg.text = "URLâ†’\n" + msg.contentMetadata["postEndUrl"]
                     cl.sendText(msg.to,msg.text)
@@ -183,7 +183,7 @@ def bot(op):
 
 					cl.sendText(msg.to, "people who reading%s\n is this\n\n\nDate and time I started it:\n[%s]" % (wait2['readMember'][msg.to],setTime[msg.to]))
 				else:
-					cl.sendText(msg.to, "Ketik dulu cek\nBaru ketik cctv")
+					cl.sendText(msg.to, "Ketik terlebih dahulu cek\nSetelah itu kemudian ketik cctv")
 
 #-----------------------------------------------------------
         if op.type == 59:
@@ -212,7 +212,7 @@ def nameUpdate():
                 profile = cl.getProfile()
                 profile.displayName = wait["cName"] + nowT
                 cl.updateProfile(profile)
-            time.sleep(600)
+            time.sleep(700)
         except:
             pass
 thread2 = threading.Thread(target=nameUpdate)
@@ -229,3 +229,4 @@ while True:
         if (Op.type != OpType.END_OF_OPERATION):
             cl.Poll.rev = max(cl.Poll.rev, Op.revision)
             bot(Op)
+# This is My Change
