@@ -9,10 +9,10 @@ import os.path,sys,urllib,shutil,subprocess
 
 
 cl = STN.LINE()
-cl.login(token='masukkan token auth kamu')
+cl.login(token='silahkan masukkan token authentikasi kamu')
 cl.loginResult()
 
-print u"Botlike Sukses"
+print u"Botlike Sukses dipakai"
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -20,7 +20,7 @@ KAC = [cl]
 mid = cl.getProfile().mid
 
 Bots = [mid]
-admid= "masukkan id kamu"
+admid= "masukkan id yang ingin kamu gunakan untuk bot"
 wait = {
     'contact':False,
     'autoJoin':True,
@@ -28,9 +28,9 @@ wait = {
     'leaveRoom':True,
     'timeline':True,
     'autoAdd':False,
-    'message':"Terimakasih Sudah Memakai Bot Likes Buatan Kami :) ",
+    'message':"Terimakasih Sudah Memakai Bot Likes Buatan Kami, jangan lupa untuk share ke teman teman kamu :) ",
     "lang":"JP",
-    "comment1":"Terimakasih Sudah Memakai Bot Likes Buatan Kami :)",
+    "comment1":"Terimakasih Sudah Memakai Bot Likes Buatan Kami, jangan lupa untuk share ke teman teman kamu :)",
     "commentOn":False,
     "commentBlack":{},
     "wblack":False,
@@ -122,7 +122,7 @@ def bot(op):
                 if wait["timeline"] == True:
                     msg.contentType = 0
                     if wait["lang"] == "JP":
-                        msg.text = "sedang menempatkan URL\n" + msg.contentMetadata["postEndUrl"]
+                        msg.text = "sedang menempatkan URL kamu\n" + msg.contentMetadata["postEndUrl"]
                     else:
                         msg.text = "URLâ†’\n" + msg.contentMetadata["postEndUrl"]
                     cl.sendText(msg.to,msg.text)
@@ -145,22 +145,22 @@ def bot(op):
 		
             elif "Tagall" in msg.text:
                 group = cl.getGroup(msg.to)
-                k = len(group.members)//100
+                k = len(group.members)//50
                 for j in xrange(k+1):
                     msg = Message(to=msg.to)
                     txt = u''
                     s=0
                     d=[]
-                    for i in group.members[j*100 : (j+1)*100]:
+                    for i in group.members[j*50 : (j+1)*50]:
                         d.append({"S":str(s), "E" :str(s+8), "M":i.mid})
-                        s += 9
+                        s += 10
                         txt += u'@Krampus\n'
                     msg.text = txt
                     msg.contentMetadata = {u'MENTION':json.dumps({"MENTIONEES":d})}
                     cl.sendMessage(msg)             
     
             elif "Cek" in msg.text:
-				cl.sendText(msg.to, "Let's see who lazy to type")
+				cl.sendText(msg.to, "Let's see who lazy to type this")
 				try:
 					del wait2['readPoint'][msg.to]
 					del wait2['readMember'][msg.to]
@@ -181,9 +181,9 @@ def bot(op):
 							print rom
 							chiya += rom[1] + "\n"
 
-					cl.sendText(msg.to, "people who reading%s\n is this\n\n\nDate and time I started it:\n[%s]" % (wait2['readMember'][msg.to],setTime[msg.to]))
+					cl.sendText(msg.to, "people who readingthis%s\n is thistime\n\n\nDate and time I started it when:\n[%s]" % (wait2['readMember'][msg.to],setTime[msg.to]))
 				else:
-					cl.sendText(msg.to, "Ketik terlebih dahulu cek\nSetelah itu kemudian ketik cctv")
+					cl.sendText(msg.to, "Silahkan Ketik terlebih dahulu cek\nSetelah itu lalu kemudian ketik cctv")
 
 #-----------------------------------------------------------
         if op.type == 59:
@@ -197,7 +197,7 @@ def bot(op):
 def a2():
     now2 = datetime.now()
     nowT = datetime.strftime(now2,"%M")
-    if nowT[14:] in ["10","20","30","40","50","00"]:
+    if nowT[14:] in ["100","150","200","250","300","000"]:
         return False
     else:
         return True
@@ -223,7 +223,7 @@ while True:
     try:
         Ops = cl.fetchOps(cl.Poll.rev, 5)
     except EOFError:
-        raise Exception("It might be wrong revision\n" + str(cl.Poll.rev))
+        raise Exception("It will might be wrong revision\n" + str(cl.Poll.rev))
 
     for Op in Ops:
         if (Op.type != OpType.END_OF_OPERATION):
